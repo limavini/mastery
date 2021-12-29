@@ -45,6 +45,8 @@ defmodule Mastery.Core.Quiz do
       quiz
       |> inc_record
       |> save_response(response)
+
+    maybe_advance(new_quiz, mastered?(new_quiz))
   end
 
   def answer_question(quiz, %Response{correct: false} = response) do
@@ -58,8 +60,8 @@ defmodule Mastery.Core.Quiz do
     Map.put(quiz, :record, new_record)
   end
 
-  # defp maybe_advance(quiz, false = _mastered), do: quiz
-  # defp maybe_advance(quiz, true = _mastered), do: advance(quiz)
+  defp maybe_advance(quiz, false = _mastered), do: quiz
+  defp maybe_advance(quiz, true = _mastered), do: advance(quiz)
 
   def advance(quiz) do
     quiz

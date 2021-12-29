@@ -33,7 +33,7 @@ defmodule QuizBuilders do
   def double_digit_addition_template_fields() do
     template_fields(
       name: :double_digit_addition,
-      generator: addition_generators(double_digits())
+      generators: addition_generators(double_digits())
     )
   end
 
